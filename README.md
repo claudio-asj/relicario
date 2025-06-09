@@ -1,2 +1,3 @@
 # Relicário
 
+build
