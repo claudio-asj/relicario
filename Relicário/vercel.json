@@ -1,7 +1,6 @@
 {
   "build": {
-    "env": {
-      "NODE_ENV": "development"
-    }
+    "command": "npm run build",
+    "outputDirectory": "dist"
   }
 }
