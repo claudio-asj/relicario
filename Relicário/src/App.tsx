@@ -1,7 +1,15 @@
+import { CartDialog } from "./components/CartDialog";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import AppRoutes from "./Routes";
+
 export default function App() {
   return (
-    <div className="h-screen w-full flex justify-center items-center">
-      <p className="text-2xl font-bold">Hello World</p>
-    </div>
-  )
+    <>
+      <Header />
+      <AppRoutes />
+      <Footer />
+      <CartDialog />
+    </>
+  );
 }
