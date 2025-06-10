@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect, useMemo } from 'react';
+import  { createContext, useState, useContext, ReactNode, useEffect, useMemo } from 'react';
 
 // Definimos o tipo para um item do carrinho
 export type CartItem = {
