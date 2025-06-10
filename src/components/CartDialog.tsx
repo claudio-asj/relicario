@@ -21,7 +21,7 @@ export function CartDialog() {
     const message = cart.map(item => `🛍️ ${item.name} - ${item.price}`).join("\n");
     const totalMsg = `\n💰 Total: R$ ${total.toFixed(2).replace(".", ",")}`;
     const fullMsg = encodeURIComponent(`Olá! Quero comprar:\n${message}${totalMsg}`);
-    return `https://wa.me/5521979317341?text=${fullMsg}`;
+    return `https://api.whatsapp.com/send?phone=5521979317341&text=${fullMsg}`;
   };
 
   return (

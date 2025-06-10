@@ -6,8 +6,8 @@ export type Product = {
   price: string;
   image: string;
   description: string;
-  available: boolean;
-  onSale: boolean;
+  available: string;
+  onSale: string;
 };
 
 // Define a estrutura do nosso contexto do carrinho.
