@@ -104,18 +104,18 @@ export function ProductSection() {
 
               <CardContent className="p-4 flex flex-col gap-2 flex-grow">
                 <h3
-                  className="text-lg font-semibold h-14 overflow-hidden"
+                  className="text-lg font-semibold line-clamp-2 overflow-hidden"
                   title={product.name}
                 >
                   {product.name}
                 </h3>
                 <p
-                  className="text-muted-foreground h-20 overflow-hidden"
+                  className="text-muted-foreground line-clamp-3 overflow-hidden"
                   title={product.description}
                 >
                   {product.description}
                 </p>
-                <p className="text-primary font-bold mt-auto pt-2">{product.price}</p>
+                <p className="text-primary text-lg font-bold mt-auto pt-2">{product.price}</p>
 
                 <div className="flex gap-2 mt-2">
                   <Button
