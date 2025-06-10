@@ -1,4 +1,4 @@
-import { ShoppingBag, Menu } from 'lucide-react'
+import { Menu, Codesandbox } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 
@@ -10,7 +10,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between px-4 md:px-6 mx-auto">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <ShoppingBag className="h-6 w-6 text-primary" />
+          <Codesandbox className="h-6 w-6 text-primary" />
           <span className="text-xl font-semibold tracking-tight text-foreground">
             Relicário
           </span>
