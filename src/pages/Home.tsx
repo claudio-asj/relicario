@@ -29,7 +29,7 @@ export function Home() {
               className="px-8 py-5 text-base rounded-xl"
               onClick={() => (window.location.href = "#produtos")}
             >
-              Ver Coleção
+              Ver Catalogo
             </Button>
 
             <Button

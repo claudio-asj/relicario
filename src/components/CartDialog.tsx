@@ -50,7 +50,7 @@ export function CartDialog() {
             cart.map(item => (
               <div
                 key={item.id}
-                className="flex items-center gap-4 border p-2 rounded"
+                className="flex gap-4 border p-2 rounded"
               >
                 <img
                   src={item.image}
@@ -63,7 +63,7 @@ export function CartDialog() {
                 </div>
                 {/* O botão de remover agora usa a função `removeProduct` do contexto */}
                 <Button
-                  variant="destructive"
+                  variant="outline"
                   size="sm"
                   onClick={() => removeProduct(item.id)}
                   aria-label={`Remover ${item.name} do carrinho`}

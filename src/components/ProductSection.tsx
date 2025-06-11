@@ -56,7 +56,7 @@ export function ProductSection() {
   }
 
   return (
-    <section className="px-4 py-12 max-w-7xl mx-auto">
+    <section className="px-4 py-20 max-w-7xl mx-auto" id="produtos">
       {/* Filtros de Categoria */}
       <div className="flex flex-wrap gap-2 justify-center mb-8">
         {categories.map((cat) => (

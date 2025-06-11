@@ -1,4 +1,4 @@
-import { Menu, Codesandbox } from 'lucide-react'
+import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 
@@ -6,15 +6,10 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 left-0 w-full z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6 mx-auto">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Codesandbox className="h-6 w-6 text-primary" />
-          <span className="text-xl font-semibold tracking-tight text-foreground">
-            Relicário
-          </span>
-        </div>
+        <img src="/logo.svg" alt="logo marca" className='h-full py-3' />
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
