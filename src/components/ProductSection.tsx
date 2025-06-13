@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { fetchProducts, getCategories, type Product } from "@/utils/products";
 import { useCart } from "@/contexts/CartContext";
 import { FiCheck, FiTrash2 } from "react-icons/fi";
@@ -13,27 +14,7 @@ import {
 import { PiPantsFill, PiSneakerFill } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
 
-// Função que converte link do Google Drive para link de visualização direta
-function getImageUrl(url: string): string {
-  const googleDriveRegex =
-    /https:\/\/drive\.google\.com\/file\/d\/([^/]+)\/view/;
-  const match = url.match(googleDriveRegex);
-
-  if (match && match[1]) {
-    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
-  }
-
-  return url;
-}
-
-const baseCategories = [
-  "Casacos",
-  "Vestidos",
-  "Acessórios",
-  "Calças",
-  "Shorts",
-  "Calçados",
-];
+const baseCategories = ["Camisas", "Vestidos", "Blazers", "Calças"];
 const categoryIcons: Record<string, JSX.Element> = {
   Casacos: <GiShirt size={18} />,
   Vestidos: <GiLargeDress size={18} />,
@@ -48,7 +29,8 @@ export function ProductSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [categories, setCategories] = useState<string[]>([]);
-  const [modalImage, setModalImage] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const { cart, addProduct, removeProduct } = useCart();
 
@@ -70,15 +52,14 @@ export function ProductSection() {
     return p.category?.trim() === selectedCategory;
   });
 
-  function handleModalClick(e: React.MouseEvent) {
-    if (e.target === e.currentTarget) {
-      setModalImage(null);
-    }
+  function openProductModal(product: Product) {
+    setSelectedProduct(product);
+    setSelectedImage(product.image);
   }
 
   return (
-    <section className="px-4 py-12 max-w-7xl mx-auto">
-      {/* Filtros de Categoria */}
+    <section className="px-4 py-20 max-w-7xl mx-auto" id="produtos">
+      {/* Filtros */}
       <div className="flex flex-wrap gap-2 justify-center mb-8">
         {categories.map((cat) => (
           <Button
@@ -100,20 +81,17 @@ export function ProductSection() {
           const isAvailable = product.available;
 
           return (
-            <Card
-              key={product.id}
-              className="overflow-hidden relative flex flex-col"
-            >
+            <Card key={product.id} className="overflow-hidden relative flex flex-col">
               {/* Imagem do produto */}
               <img
-                src={getImageUrl(product.image)}
+                src={(product.image)}
                 alt={product.name}
                 loading="lazy"
                 className="w-full h-64 object-cover cursor-pointer"
-                onClick={() => setModalImage(product.image)}
+                onClick={() => openProductModal(product)}
               />
 
-              {/* Tags de Disponibilidade e Promoção */}
+              {/* Tags */}
               <div className="absolute top-2 left-2 flex flex-col gap-1">
                 {!isAvailable && (
                   <span className="bg-red-600 text-white text-xs px-2 py-1 rounded">
@@ -186,19 +164,47 @@ export function ProductSection() {
         })}
       </div>
 
-      {/* Modal de Imagem */}
-      {modalImage && (
-        <div
-          onClick={handleModalClick}
-          className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 cursor-pointer"
+      {/* Modal com Galeria */}
+      {selectedProduct && (
+        <Dialog
+          open={!!selectedProduct}
+          onOpenChange={(open) => {
+            if (!open) {
+              setSelectedProduct(null);
+              setSelectedImage(null);
+            }
+          }}
         >
-          <img
-            src={getImageUrl(modalImage)}
-            alt="Imagem ampliada do produto"
-            className="max-w-full max-h-full rounded shadow-lg"
-            loading="lazy"
-          />
-        </div>
+          <DialogContent className="max-w-3xl w-full">
+            <div className="flex flex-col items-center">
+              {/* Imagem principal */}
+              <img
+                src={selectedImage ?? selectedProduct.image}
+                alt={selectedProduct.name}
+                className="w-full max-h-[500px] object-contain rounded-lg"
+              />
+
+              {/* Miniaturas */}
+              <div className="flex gap-3 mt-4">
+                {[selectedProduct.image, selectedProduct.image2, selectedProduct.image3]
+                  .filter(Boolean)
+                  .map((img, i) => (
+                    <img
+                      key={i}
+                      src={img!}
+                      alt={`Miniatura ${i + 1}`}
+                      onClick={() => setSelectedImage(img!)}
+                      className={`h-20 w-20 object-cover rounded-md cursor-pointer border-2 ${
+                        selectedImage === img
+                          ? "border-primary"
+                          : "border-transparent"
+                      }`}
+                    />
+                  ))}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
     </section>
   );
