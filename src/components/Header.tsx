@@ -13,10 +13,10 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">Home</a>
-          <a href="#produtos" className="hover:text-foreground transition-colors">Produtos</a>
-          <a href="#sobre" className="hover:text-foreground transition-colors">Sobre</a>
-          <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
+          {/* <a href="#" className="hover:text-foreground transition-colors">Home</a> */}
+          <a href="#produtos" className="hover:text-foreground transition-colors">Catalogo de Produtos</a>
+          {/* <a href="#sobre" className="hover:text-foreground transition-colors">Sobre</a>
+          <a href="#contato" className="hover:text-foreground transition-colors">Contato</a> */}
         </nav>
 
         {/* CTA WhatsApp */}

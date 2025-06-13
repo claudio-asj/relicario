@@ -15,7 +15,7 @@ export function Home() {
 
         <div className="relative z-10 text-center px-4 md:px-6 max-w-3xl">
           <h1 className="text-4xl font-black text-white md:text-5xl lg:text-6xl leading-tight text-foreground tracking-tight drop-shadow-md">
-            A Elegância está nos detalhes
+          A vida é uma festa e você merece um look .Sua moda quem faz é você!
           </h1>
 
           <p className="text-white/70 text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-sm">
