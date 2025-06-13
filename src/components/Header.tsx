@@ -21,7 +21,7 @@ export function Header() {
 
         {/* CTA WhatsApp */}
         <div className="hidden md:block">
-          <Button onClick={() => window.open('https://wa.me/SEUNUMERO', '_blank')} variant="default">
+          <Button onClick={() => window.open('https://wa.me/5521980084054', '_blank')} variant="default">
             Fale Conosco
           </Button>
         </div>
@@ -42,12 +42,12 @@ export function Header() {
       {isOpen && (
         <div className="md:hidden bg-background border-t">
           <nav className="flex flex-col gap-4 p-4 text-sm font-medium text-muted-foreground">
-            <a href="#" className="hover:text-foreground">Home</a>
+            {/* <a href="#" className="hover:text-foreground">Home</a>
             <a href="#produtos" className="hover:text-foreground">Produtos</a>
             <a href="#sobre" className="hover:text-foreground">Sobre</a>
-            <a href="#contato" className="hover:text-foreground">Contato</a>
+            <a href="#contato" className="hover:text-foreground">Contato</a> */}
             <Button
-              onClick={() => window.open('https://wa.me/SEUNUMERO', '_blank')}
+              onClick={() => window.open('https://wa.me/5521980084054', '_blank')}
               className="w-full"
             >
               WhatsApp
