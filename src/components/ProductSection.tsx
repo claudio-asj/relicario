@@ -3,22 +3,45 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { fetchProducts, getCategories, type Product } from "@/utils/products";
 import { useCart } from "@/contexts/CartContext";
+import { FiCheck, FiTrash2 } from "react-icons/fi";
 import {
-  FiShoppingBag,
-  FiLayers,
-  FiSliders,
-  FiArchive,
-  FiCheck,
-  FiTrash2,
-} from "react-icons/fi";
+  GiLargeDress,
+  GiPearlNecklace,
+  GiShirt,
+  GiUnderwearShorts,
+} from "react-icons/gi";
+import { PiPantsFill, PiSneakerFill } from "react-icons/pi";
+import { IoIosMore } from "react-icons/io";
 
-const baseCategories = ["Vestidos", "Blazers", "Calças", "Camisas"];
+// Função que converte link do Google Drive para link de visualização direta
+function getImageUrl(url: string): string {
+  const googleDriveRegex =
+    /https:\/\/drive\.google\.com\/file\/d\/([^/]+)\/view/;
+  const match = url.match(googleDriveRegex);
+
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+  }
+
+  return url;
+}
+
+const baseCategories = [
+  "Casacos",
+  "Vestidos",
+  "Acessórios",
+  "Calças",
+  "Shorts",
+  "Calçados",
+];
 const categoryIcons: Record<string, JSX.Element> = {
-  Vestidos: <FiSliders size={18} />,
-  Blazers: <FiLayers size={18} />,
-  Calças: <FiSliders size={18} />,
-  Camisas: <FiShoppingBag size={18} />,
-  Outros: <FiArchive size={18} />,
+  Casacos: <GiShirt size={18} />,
+  Vestidos: <GiLargeDress size={18} />,
+  Acessórios: <GiPearlNecklace size={18} />,
+  Calças: <PiPantsFill size={18} />,
+  Shorts: <GiUnderwearShorts size={18} />,
+  Calçados: <PiSneakerFill size={18} />,
+  Outros: <IoIosMore size={18} />,
 };
 
 export function ProductSection() {
@@ -40,7 +63,6 @@ export function ProductSection() {
     });
   }, []);
 
-  // Filtra os produtos pela categoria selecionada
   const filteredProducts = products.filter((p) => {
     if (selectedCategory === "Outros") {
       return !baseCategories.includes(p.category?.trim() || "");
@@ -48,7 +70,6 @@ export function ProductSection() {
     return p.category?.trim() === selectedCategory;
   });
 
-  // Função para fechar o modal ao clicar fora da imagem
   function handleModalClick(e: React.MouseEvent) {
     if (e.target === e.currentTarget) {
       setModalImage(null);
@@ -79,11 +100,15 @@ export function ProductSection() {
           const isAvailable = product.available;
 
           return (
-            <Card key={product.id} className="overflow-hidden relative flex flex-col">
-              {/* Imagem do produto, ao clicar abre o modal */}
+            <Card
+              key={product.id}
+              className="overflow-hidden relative flex flex-col"
+            >
+              {/* Imagem do produto */}
               <img
-                src={product.image}
+                src={getImageUrl(product.image)}
                 alt={product.name}
+                loading="lazy"
                 className="w-full h-64 object-cover cursor-pointer"
                 onClick={() => setModalImage(product.image)}
               />
@@ -115,7 +140,9 @@ export function ProductSection() {
                 >
                   {product.description}
                 </p>
-                <p className="text-primary text-lg font-bold mt-auto pt-2">{product.price}</p>
+                <p className="text-primary text-lg font-bold mt-auto pt-2">
+                  {product.price}
+                </p>
 
                 <div className="flex gap-2 mt-2">
                   <Button
@@ -166,9 +193,10 @@ export function ProductSection() {
           className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 cursor-pointer"
         >
           <img
-            src={modalImage}
+            src={getImageUrl(modalImage)}
             alt="Imagem ampliada do produto"
             className="max-w-full max-h-full rounded shadow-lg"
+            loading="lazy"
           />
         </div>
       )}
