@@ -14,7 +14,7 @@ import {
 import { PiPantsFill, PiSneakerFill } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
 
-const baseCategories = ["Casacos", "Vestidos", "BlazAcessóriosers", "Calças", "Shorts" , "Calçados" ];
+const baseCategories = ["Casacos", "Vestidos", "BlazAcessóriosers", "Calças", "Shorts" , "Calçados", "Acessórios" ];
 const categoryIcons: Record<string, JSX.Element> = {
   Casacos: <GiShirt size={18} />,
   Vestidos: <GiLargeDress size={18} />,
