@@ -15,7 +15,7 @@ export function Home() {
 
         <div className="relative z-10 text-center px-4 md:px-6 max-w-3xl">
           <h1 className="text-4xl font-black text-white md:text-5xl lg:text-6xl leading-tight text-foreground tracking-tight drop-shadow-md">
-          A vida é uma festa e você merece um look .Sua moda quem faz é você!
+          A vida é uma festa e você merece um look. Sua moda quem faz é você!
           </h1>
 
           <p className="text-white/70 text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-sm">
@@ -36,7 +36,7 @@ export function Home() {
               size="lg"
               variant="outline"
               className="px-8 py-5 text-base rounded-xl border-foreground/20 hover:border-foreground"
-              onClick={() => window.open("https://wa.me/SEUNUMERO", "_blank")}
+              onClick={() => window.open("https://wa.me/5521980084054", "_blank")}
             >
               Fale com a gente
             </Button>
