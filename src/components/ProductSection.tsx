@@ -13,8 +13,10 @@ import {
 } from "react-icons/gi";
 import { PiPantsFill, PiSneakerFill } from "react-icons/pi";
 import { IoIosMore } from "react-icons/io";
+import { BsPersonStandingDress } from "react-icons/bs";
+import { FaTshirt } from "react-icons/fa";
 
-const baseCategories = ["Casacos", "Vestidos", "BlazAcessóriosers", "Calças", "Shorts" , "Calçados", "Acessórios" ];
+const baseCategories = ["Casacos", "Vestidos", "Acessórios", "Calças", "Shorts" , "Calçados", "Acessórios", "Macaquinos", "Camisas", "Conjuntos" ];
 const categoryIcons: Record<string, JSX.Element> = {
   Casacos: <GiShirt size={18} />,
   Vestidos: <GiLargeDress size={18} />,
@@ -22,6 +24,9 @@ const categoryIcons: Record<string, JSX.Element> = {
   Calças: <PiPantsFill size={18} />,
   Shorts: <GiUnderwearShorts size={18} />,
   Calçados: <PiSneakerFill size={18} />,
+  Macaquinos: <IoIosMore size={18} />,
+  Camisas: <FaTshirt size={18} />,
+  Conjuntos: <BsPersonStandingDress size={18} />,
   Outros: <IoIosMore size={18} />,
 };
 
