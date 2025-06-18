@@ -8,6 +8,7 @@ import {
   DialogTrigger,
 } from "@radix-ui/react-dialog";
 import { Dialog } from "./ui/dialog";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 const whatsappNumber = "5521979317341"; // formato internacional sem + para whatsapp link
 
@@ -30,7 +31,7 @@ export const Footer = () => {
             aria-label="Instagram"
             className="hover:underline"
           >
-            Instagram
+            <FaInstagram className="text-2xl"/>
           </a>
           <a
             href="https://www.facebook.com/seuFacebook"
@@ -39,16 +40,16 @@ export const Footer = () => {
             aria-label="Facebook"
             className="hover:underline"
           >
-            Facebook
+            <FaFacebook className="text-2xl"/>
           </a>
           <a
-            href="https://twitter.com/seuTwitter"
+            href="https://wa.me/5521980084054"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
             className="hover:underline"
           >
-            Twitter
+            <FaWhatsapp className="text-2xl"/>
           </a>
         </div>
 
@@ -56,7 +57,7 @@ export const Footer = () => {
         <Dialog>
           <DialogTrigger asChild>
             <button
-              className="text-sm underline hover:text-purple-300 mb-8"
+              className="text-sm hover:text-purple-300 mb-8"
               aria-label="Sobre o desenvolvedor"
             >
               Desenvolvido por <strong>CLDev</strong>
@@ -71,11 +72,11 @@ export const Footer = () => {
             >
               <DialogTitle className="text-xl font-bold mb-4 flex items-center space-x-4">
                 <img
-                  src="/sua-foto.jpg"
+                  src="https://avatars.githubusercontent.com/u/23386518?v=4"
                   alt="Foto de Claudio Junior"
-                  className="w-16 h-16 rounded-full object-cover border-2 border-purple-950"
+                  className="w-24 h-24 rounded-full object-cover border-2 border-purple-950"
                 />
-                <span>Claudio Junior - Desenvolvedor</span>
+                <span>Claudio Junior - Desenvolvedor Web</span>
               </DialogTitle>
 
               <DialogDescription
@@ -86,31 +87,34 @@ export const Footer = () => {
                 para você. Basta entrar em contato!
               </DialogDescription>
 
-              <div className="flex space-x-4 mb-6">
+              <div className="flex justify-center flex-wrap space-x-4 mb-6">
                 {/* Links redes sociais */}
                 <a
                   href="https://github.com/claudio-asj"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-700 hover:text-purple-900 underline"
+                  className="text-purple-700 hover:text-purple-900 flex items-center gap-2 text-xl"
                 >
+                  <FaGithub/>
                   GitHub
                 </a>
                 <a
                   href="https://www.linkedin.com/in/claudio-junior-537319162"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-700 hover:text-purple-900 underline"
+                  className="text-purple-700 hover:text-purple-900 flex items-center gap-2 text-xl"
                 >
+                  <FaLinkedin/>
                   LinkedIn
                 </a>
                 <a
                   href="https://twitter.com/seuTwitter"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-700 hover:text-purple-900 underline"
+                  className="text-purple-700 hover:text-purple-900 flex items-center gap-2 text-xl"
                 >
-                  Twitter
+                  <FaWhatsapp/>
+                  Whatsapp
                 </a>
               </div>
 
